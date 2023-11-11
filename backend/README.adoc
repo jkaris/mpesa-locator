@@ -1,0 +1,49 @@
+:toc:
+= Mpesa Locator Back-End
+
+The back-end consists of a Django project which exposes REST API endpoints for authentication and geo-location data for the link:https://github.com/jkariscodes/mpesa-locator-client/[MPESA client app]. The data used in this project has been sourced from link:https://developers.google.com/maps/[Google Maps].
+
+Python packages used in this project are listed in link:Pipfile[`Pipfile`] and structured as general dependencies and development dependencies. Their corresponding dependencies and their associated hashes can be located in link:Pipfile.lock[`Pipfile.lock`] which supports more secure verification and enables deterministic builds. This is my motivation for using Pipenv. Please refer to link:https://pipenv.pypa.io/[Pipenv docs] for more details. The initial requirements include:
+
+* https://docs.djangoproject.com/en/4.2/[Django] as the base framework which is a robust backend framework that supports large web projects such as Instagram and can be used in handling link:https://docs.djangoproject.com/en/4.2/ref/contrib/gis/[geospatial data], machine learning and artificial intelligence models and internet of things (IoT).
+
+'''
+
+== Deployment
+
+This section highlights how you can deploy the project locally in your computer for testing and development purposes. Deploying this project locally includes some few steps listed below.
+
+=== Standard Local Deployment
+
+* Install Python (link:https://www.python.org/downloads/release/python-31012/[version 3.10] used here), in your computer if you do not have it installed already. Here are steps for link:https://dev.to/jkariukidev/installing-python3-in-windows10-4d47[Windows installation], link:https://dev.to/jkariukidev/installing-python3-in-linux-37da[Linux installation] and link:https://docs.python-guide.org/starting/install3/osx/[MacOS].
+
+=== Containerized Local Deployment
+
+This project can be deployed using a link:https://www.ibm.com/topics/containerization[containerized approach].
+
+=== Production Deployment
+
+You can also deploy this project in a production environment.
+
+== Apps
+
+The applications present in this project include:
+
+== Linting
+
+link:https://github.com/psf/black[Black] is used to automatically format and lint
+files.
+
+Other alternatives that you can use include link:https://github.com/hhatto/autopep8[autopep8], link:https://pycqa.github.io/isort/[isort] and link:https://github.com/google/yapf[yapf] among others.
+
+
+
+You can set up your editor to automatically format Python files using Black
+following the instructions at link:https://github.com/psf/black#editor-integration[Black's GitHub
+page].
+
+You can also use the `black --check` command to check files that require formatting and `black .` to automatically format all python projects in current directory represented by the dot.
+
+== Front-end
+
+The front-end is an interactive React app. Read more about how it at link:https://github.com/jkariscodes/mpesa-locator-client/[MPESA client app].
