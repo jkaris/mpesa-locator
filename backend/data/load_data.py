@@ -5,16 +5,17 @@ from django.contrib.gis.gdal import DataSource
 from mpesa_api.models import MpesaPoints
 
 mpesapoints_mapping = {
-    'formatted_field': 'formatted_',
-    'latitude': 'latitude',
-    'longitude': 'longitude',
-    'input_stri': 'input_stri',
-    'county': 'COUNTY',
-    'geom': 'MULTIPOINT', }
+    "formatted_field": "formatted_",
+    "latitude": "latitude",
+    "longitude": "longitude",
+    "input_stri": "input_stri",
+    "county": "COUNTY",
+    "geom": "MULTIPOINT",
+}
 
 
 def run(verbose=True):
-    file = os.getcwd() + '/data/mpesa_locations.gpkg'
+    file = os.getcwd() + "/data/mpesa_locations.gpkg"
     ds = DataSource(file)
     mpesalocations_layer = ds[0].name
 

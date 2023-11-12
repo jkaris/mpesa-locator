@@ -11,5 +11,5 @@ class MpesaPointsViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = MpesaPoints.objects.all()
     serializer_class = MpesaPointsSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = '__all__'
+    filterset_fields = "__all__"
     filterset_class = MpesaPointsFilter

@@ -10,12 +10,12 @@ from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    http_method_names = ['get']
+    http_method_names = ["get"]
     serializer_class = UserSerializer
     permission_classes = (IsAuthenticated,)
     filter_backends = [filters.OrderingFilter]
-    ordering_fields = ['updated']
-    ordering = ['-updated']
+    ordering_fields = ["updated"]
+    ordering = ["-updated"]
 
     def get_queryset(self):
         if self.request.user.is_superuser:
@@ -33,7 +33,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class LoginViewSet(ModelViewSet, TokenObtainPairView):
     serializer_class = LoginSerializer
     permission_classes = (AllowAny,)
-    http_method_names = ['post']
+    http_method_names = ["post"]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -49,7 +49,7 @@ class LoginViewSet(ModelViewSet, TokenObtainPairView):
 class RegistrationViewSet(ModelViewSet, TokenObtainPairView):
     serializer_class = RegistrationSerializer
     permission_classes = (AllowAny,)
-    http_method_names = ['post']
+    http_method_names = ["post"]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -62,16 +62,19 @@ class RegistrationViewSet(ModelViewSet, TokenObtainPairView):
             "access": str(refresh.access_token),
         }
 
-        return Response({
-            "user": serializer.data,
-            "refresh": res["refresh"],
-            "token": res["access"]
-        }, status=status.HTTP_201_CREATED)
+        return Response(
+            {
+                "user": serializer.data,
+                "refresh": res["refresh"],
+                "token": res["access"],
+            },
+            status=status.HTTP_201_CREATED,
+        )
 
 
 class RefreshViewSet(viewsets.ViewSet, TokenRefreshView):
     permission_classes = (AllowAny,)
-    http_method_names = ['post']
+    http_method_names = ["post"]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include(('users.routers', 'users'), namespace='user-api')),
-    path('api/', include(('mpesa_api.routers', 'mpesa_api'), namespace='mpesa-api')),
+    path("admin/", admin.site.urls),
+    path("api/", include(("users.routers", "users"), namespace="user-api")),
+    path("api/", include(("mpesa_api.routers", "mpesa_api"), namespace="mpesa-api")),
 ]

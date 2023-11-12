@@ -5,9 +5,7 @@ from .viewsets import MpesaPointsViewSet
 routes = SimpleRouter()
 
 # MPESA
-routes.register(r'gis', MpesaPointsViewSet, basename='mpesa-points')
+routes.register(r"gis", MpesaPointsViewSet, basename="mpesa-points")
 
 
-urlpatterns = [
-    *routes.urls
-]
+urlpatterns = [*routes.urls]

@@ -1,4 +1,8 @@
-from rest_framework_gis.serializers import ModelSerializer, GeoFeatureModelSerializer, GeometryField
+from rest_framework_gis.serializers import (
+    ModelSerializer,
+    GeoFeatureModelSerializer,
+    GeometryField,
+)
 from .models import MpesaPoints
 
 
@@ -7,5 +11,5 @@ class MpesaPointsSerializer(GeoFeatureModelSerializer):
 
     class Meta:
         model = MpesaPoints
-        geo_field = 'geom'
-        fields = '__all__'
+        geo_field = "geom"
+        fields = "__all__"
