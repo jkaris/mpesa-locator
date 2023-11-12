@@ -65,195 +65,195 @@ help:
 
 build:
 	@echo -e "$(CYAN)Building services:$(COFF)"
-	@docker-compose -f docker-compose.yml build
+	@docker compose -f docker-compose.yml build
 
 build-dev:
 	@echo -e "$(CYAN)Building services for development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml build
+	@docker compose -f docker-compose-dev.yml build
 
 build-backend:
 	@echo -e "$(CYAN)Building backend services:$(COFF)"
-	@docker-compose -f docker-compose.yml build backend
+	@docker compose -f docker-compose.yml build backend
 
 build-backend-dev:
 	@echo -e "$(CYAN)Building backend services for development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml build backend
+	@docker compose -f docker-compose-dev.yml build backend
 
 build-frontend:
 	@echo -e "$(CYAN)Building frontend services:$(COFF)"
-	@docker-compose -f docker-compose.yml build frontend
+	@docker compose -f docker-compose.yml build frontend
 
 build-frontend-dev:
 	@echo -e "$(CYAN)Building frontend services for development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml build frontend
+	@docker compose -f docker-compose-dev.yml build frontend
 
 start-all-services:
 	@echo -e "$(RED)Starting all services:$(COFF)"
-	@docker-compose -f docker-compose.yml up -d
+	@docker compose -f docker-compose.yml up -d
 
 start-all-services-dev:
 	@echo -e "$(RED)Starting all services in development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml up -d
+	@docker compose -f docker-compose-dev.yml up -d
 
 start-backend:
 	@echo -e "$(RED)Starting backend services:$(COFF)"
-	@docker-compose -f docker-compose.yml up -d backend
+	@docker compose -f docker-compose.yml up -d backend
 
 start-backend-dev:
 	@echo -e "$(RED)Building backend services for development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml up -d backend
+	@docker compose -f docker-compose-dev.yml up -d backend
 
 start-frontend:
 	@echo -e "$(RED)Starting backend services:$(COFF)"
-	@docker-compose -f docker-compose.yml up -d frontend
+	@docker compose -f docker-compose.yml up -d frontend
 
 start-frontend-dev:
 	@echo -e "$(RED)Building backend services for development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml up -d frontend
+	@docker compose -f docker-compose-dev.yml up -d frontend
 
 stop-all-services:
 	@echo -e "$(GRAY)Stopping all services:$(COFF)"
-	@docker-compose -f docker-compose.yml down
+	@docker compose -f docker-compose.yml down
 
 stop-all-services-dev:
 	@echo -e "$(GRAY)Stopping all services:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml down
+	@docker compose -f docker-compose-dev.yml down
 
 stop-backend:
 	@echo -e "$(GRAY)Stopping backend services:$(COFF)"
-	@docker-compose -f docker-compose.yml down backend
+	@docker compose -f docker-compose.yml down backend
 
 stop-backend-dev:
 	@echo -e "$(GRAY)Stopping backend services in development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml down backend
+	@docker compose -f docker-compose-dev.yml down backend
 
 stop-frontend:
 	@echo -e "$(GRAY)Stopping frontend services:$(COFF)"
-	@docker-compose -f docker-compose.yml down frontend
+	@docker compose -f docker-compose.yml down frontend
 
 stop-frontend-dev:
 	@echo -e "$(GRAY)Stopping frontend services for development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml down frontend
+	@docker compose -f docker-compose-dev.yml down frontend
 
 delete-all-volumes:
 	@echo -e "$(GREEN)Deleting all volumes:$(COFF)"
-	@docker-compose -f docker-compose.yml down -v
+	@docker compose -f docker-compose.yml down -v
 
 delete-all-volumes-dev:
 	@echo -e "$(GREEN)Deleting all volumes in development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml down -v
+	@docker compose -f docker-compose-dev.yml down -v
 
 makemigrations:
 	@echo -e "$(PURPLE)Making migrations:$(COFF)"
-	@docker-compose -f docker-compose.yml run --rm backend python ./manage.py makemigrations $(cmd)
+	@docker compose -f docker-compose.yml run --rm backend python ./manage.py makemigrations $(cmd)
 
 makemigrations-dev:
 	@echo -e "$(PURPLE)Making migrations for development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml run --rm backend python ./manage.py makemigrations $(cmd)
+	@docker compose -f docker-compose-dev.yml run --rm backend python ./manage.py makemigrations $(cmd)
 
 migrate:
 	@echo -e "$(PURPLE)Building frontend services:$(COFF)"
-	@docker-compose -f docker-compose.yml run --rm backend python ./manage.py migrate $(cmd)
+	@docker compose -f docker-compose.yml run --rm backend python ./manage.py migrate $(cmd)
 
 migrate-dev:
 	@echo -e "$(PURPLE)Updating the database for development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml run --rm backend python ./manage.py migrate $(cmd)
+	@docker compose -f docker-compose-dev.yml run --rm backend python ./manage.py migrate $(cmd)
 
 load-initial-data:
 	@echo -e "$(PURPLE)Loading django fixture:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml run --rm backend python ./manage.py loaddata users/fixtures/users.json
+	@docker compose -f docker-compose-dev.yml run --rm backend python ./manage.py loaddata users/fixtures/users.json
 
 load-initial-data-dev:
 	@echo -e "$(PURPLE)Loading django fixture:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml run --rm backend python ./manage.py loaddata users/fixtures/users.json
+	@docker compose -f docker-compose-dev.yml run --rm backend python ./manage.py loaddata users/fixtures/users.json
 
 load-gis-data:
 	@echo -e "$(PURPLE)Loading spatial data:$(COFF)"
-	@docker-compose -f docker-compose.yml run --rm backend python ./manage.py shell -c "from data import load_data; load_data.run()"
+	@docker compose -f docker-compose.yml run --rm backend python ./manage.py shell -c "from data import load_data; load_data.run()"
 
 load-gis-data-dev:
 	@echo -e "$(PURPLE)Loading spatial data in development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml run --rm backend python ./manage.py shell -c "from data import load_data; load_data.run()"
+	@docker compose -f docker-compose-dev.yml run --rm backend python ./manage.py shell -c "from data import load_data; load_data.run()"
 
 create-superuser:
 	@echo -e "$(PURPLE)Creating Docker images:$(COFF)"
-	@docker-compose -f docker-compose.yml run --rm backend python ./manage.py createsuperuser
+	@docker compose -f docker-compose.yml run --rm backend python ./manage.py createsuperuser
 
 create-superuser-dev:
 	@echo -e "$(PURPLE)Creating Docker images:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml run --rm backend python ./manage.py createsuperuser
+	@docker compose -f docker-compose-dev.yml run --rm backend python ./manage.py createsuperuser
 
 collectstatic:
 	@echo -e "$(PURPLE)Copying static files and assets:$(COFF):$(COFF)"
-	@docker-compose -f docker-compose.yml --rm backend python ./manage.py collectstatic --no-input $(cmd)
+	@docker compose -f docker-compose.yml --rm backend python ./manage.py collectstatic --no-input $(cmd)
 
 collectstatic-dev:
 	@echo -e "$(PURPLE)Copying static files and assets in development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml --rm backend python ./manage.py collectstatic $(cmd)
+	@docker compose -f docker-compose-dev.yml --rm backend python ./manage.py collectstatic $(cmd)
 
 show-all-logs:
 	@echo -e "$(YELLOW)Printing all logs:$(COFF):$(COFF)"
-	@docker-compose -f docker-compose.yml logs $(cmd)
+	@docker compose -f docker-compose.yml logs $(cmd)
 
 show-all-logs-dev:
 	@echo -e "$(YELLOW)Printing all logs in development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml logs $(cmd)
+	@docker compose -f docker-compose-dev.yml logs $(cmd)
 
 show-all-logs-interactive:
 	@echo -e "$(YELLOW)Printing all logs interactively:$(COFF):$(COFF)"
-	@docker-compose -f docker-compose.yml logs -f $(cmd)
+	@docker compose -f docker-compose.yml logs -f $(cmd)
 
 show-all-logs-interactive-dev:
 	@echo -e "$(YELLOW)Printing all logs interactively in development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml logs -f $(cmd)
+	@docker compose -f docker-compose-dev.yml logs -f $(cmd)
 
 show-backend-logs:
 	@echo -e "$(YELLOW)Print backend logs:$(COFF):$(COFF)"
-	@docker-compose -f docker-compose.yml logs backend $(cmd)
+	@docker compose -f docker-compose.yml logs backend $(cmd)
 
 show-backend-logs-dev:
 	@echo -e "$(YELLOW)Print backend logs in development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml logs backend $(cmd)
+	@docker compose -f docker-compose-dev.yml logs backend $(cmd)
 
 show-backend-logs-interactive:
 	@echo -e "$(YELLOW)Printing backend logs interactively:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml logs -f backend $(cmd)
+	@docker compose -f docker-compose-dev.yml logs -f backend $(cmd)
 
 show-backend-logs-interactive-dev:
 	@echo -e "$(YELLOW)Printing all logs interactively in development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml logs -f backend $(cmd)
+	@docker compose -f docker-compose-dev.yml logs -f backend $(cmd)
 
 show-frontend-logs:
 	@echo -e "$(YELLOW)Print frontend logs:$(COFF):$(COFF)"
-	@docker-compose -f docker-compose.yml logs frontend $(cmd)
+	@docker compose -f docker-compose.yml logs frontend $(cmd)
 
 show-frontend-logs-dev:
 	@echo -e "$(YELLOW)Print frontend logs in development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml logs frontend $(cmd)
+	@docker compose -f docker-compose-dev.yml logs frontend $(cmd)
 
 show-frontend-logs-interactive:
 	@echo -e "$(YELLOW)Print frontend logs interactively:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml logs -f frontend $(cmd)
+	@docker compose -f docker-compose-dev.yml logs -f frontend $(cmd)
 
 show-frontend-logs-interactive-dev:
 	@echo -e "$(YELLOW)Print frontend logs interactively in development:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml logs -f frontend $(cmd)
+	@docker compose -f docker-compose-dev.yml logs -f frontend $(cmd)
 
 eslint:
 	@echo -e "$(BLUE)Running ESLint:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml run --rm frontend pnpm run lint
+	@docker compose -f docker-compose-dev.yml run --rm frontend pnpm run lint
 
 eslint-fix:
 	@echo -e "$(BLUE)Running ESLint fix:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml run --rm frontend pnpm run lint-fix
+	@docker compose -f docker-compose-dev.yml run --rm frontend pnpm run lint-fix
 
 lint-backend:
 	@echo -e "$(BLUE)Running Black check on backend:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml run --rm backend black --check backend/
+	@docker compose -f docker-compose-dev.yml run --rm backend black --check backend/
 
 lint-backend-fix:
 	@echo -e "$(BLUE)Running Black formatting:$(COFF)"
-	@docker-compose -f docker-compose-dev.yml run --rm backend black backend/
+	@docker compose -f docker-compose-dev.yml run --rm backend black backend/
 
 quality: eslint lint-backend
 	@echo -e "$(BLUE)No code style issues detected.$(COFF)"
